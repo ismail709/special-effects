@@ -1,0 +1,20 @@
+.container {
+    width: 400px;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+}
+
+.container img {
+    width: 400px;
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.container img:first-child {
+    z-index: 2;
+}

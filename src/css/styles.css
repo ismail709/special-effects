@@ -1,28 +1,64 @@
+:root {
+    font-family: Helvetica, sans-serif;
+    color: #E0FBFC;
+}
+
 body {
     padding: 1rem;
+    background-color: #253237;
+    background-color: #253237;
+background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23e0fbfc' fill-opacity='0.04' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 h1 {
+    font-size: 3rem !important;
+    margin-block: 1rem;
+}
+
+hr {
+    border: 1px solid #E0FBFC;
     margin: 1rem 0;
 }
 
-.container {
-    width: 400px;
-    height: 300px;
-    overflow: hidden;
-    position: relative;
-}
-
-.container img {
-    width: 400px;
-    height: 300px;
-    object-fit: cover;
-    object-position: center;
+.repo-link {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 20px;
+    right: 20px;
+    display: inline-block;
+    padding: .5rem;
+    border-radius: 8px;
+    background-color: #E0FBFC;
 }
 
-.container img:first-child {
-    z-index: 2;
+.repo-link img {
+    width: 48px;
+    height: 48px;
+}
+
+table {
+    font-size: 1.25rem;
+}
+
+table td, table th {
+    padding: 1rem;
+    border: 1px solid #E0FBFC;
+}
+
+table th {
+    font-weight: bold;
+}
+
+tr td:first-of-type {
+    text-align: center;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+@media (min-width:768px) {
+    table {
+        max-width: 700px;
+        margin: 0 auto;
+    }
 }
