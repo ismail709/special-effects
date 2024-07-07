@@ -1,53 +1,37 @@
-// import { defineConfig } from "vite";
-// import path from "path";
-// import fs from "fs";
-
-// function getHtmlEntryFiles(srcDir) {
-//   const entry = {};
-
-//   function traverseDir(currentDir) {
-//     const files = fs.readdirSync(currentDir);
-
-//     files.forEach((file) => {
-//       const filePath = path.join(currentDir, file);
-//       const isDirectory = fs.statSync(filePath).isDirectory();
-
-//       if (isDirectory) {
-//         // If it's a directory, recursively traverse it
-//         traverseDir(filePath);
-//       } else if (path.extname(file) === ".html") {
-//         // If it's an HTML file, add it to the entry object
-//         const name = path.relative(srcDir, filePath).replace(/\..*$/, "");
-//         entry[name] = filePath;
-//       }
-//     });
-//   }
-
-//   traverseDir(srcDir);
-
-//   return entry;
-// }
-
-// export default defineConfig({
-//   build: {
-//     rollupOptions: {
-//       input: getHtmlEntryFiles("src"),
-//     },
-//     emptyOutDir: true,
-//   },
-//   optimizeDeps: {
-//     entries: "src/**/*{.html,.css,.js}",
-//   },
-// });
-
 import { defineConfig } from "vite";
+import path from "path";
+import fs from "fs";
+
+function getEntryPoints(dir, baseDir = dir, entryPoints = {}) {
+  const files = fs.readdirSync(dir);
+
+  files.forEach((file) => {
+    const fullPath = path.join(dir, file);
+    const relativePath = path.relative(baseDir, fullPath);
+    const stat = fs.statSync(fullPath);
+
+    if (stat.isDirectory()) {
+      getEntryPoints(fullPath, baseDir, entryPoints);
+    } else if (path.extname(file) === ".html") {
+      const entryKey = path.join(
+        path.dirname(relativePath),
+        path.basename(file, ".html")
+      );
+      entryPoints[entryKey] = fullPath;
+    }
+  });
+
+  return entryPoints;
+}
+
+const entryPoints = getEntryPoints(path.resolve(__dirname, "src/pages"));
 
 export default defineConfig({
   build: {
     rollupOptions: {
       input: {
         main: "index.html",
-        imageUnderImage: "src/pages/image-under-image/index.html",
+        ...entryPoints,
       },
     },
   },
