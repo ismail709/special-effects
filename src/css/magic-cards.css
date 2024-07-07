@@ -1,0 +1,60 @@
+:root {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    display: flex;
+    align-items: start;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 0rem;
+    padding: 0rem;
+    border-radius: 1rem;
+    background-image: linear-gradient(to top left,#4568DC,#B06AB3);
+    font-size: 1rem;
+    max-width: 150px;
+    box-shadow: inset 0px 0px 12px 0px rgba(0,0,0,0.75);
+    transition: all .3s ease-in-out;
+}
+
+.card--hover {
+    max-width: 316px;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.card-body--show {
+    /* max-height: 500px !important; */
+    display: block !important;
+}
+.card-body {
+    /* max-height: 0px; */
+    /* overflow: hidden; */
+    display: none;
+    color: white;
+    transition: all .5s ease-in-out;
+}
+
+.card table td:first-child {
+    font-weight: bold;
+    padding-right: 1rem;
+    min-width: 142px;
+}
+
+.card table td {
+    vertical-align: top;
+    padding-block: .5rem;
+}
+.card table tr:hover {
+    background-color: rgba(0,0,0,0.1);
+}
+
+.card-img {
+    border-radius: 1rem;
+    overflow: hidden;
+}
