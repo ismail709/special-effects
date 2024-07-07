@@ -23,7 +23,6 @@ $(".card").on("mouseenter", function (e) {
 });
 $(".card").on("mouseleave", function (e) {
   $(this).toggleClass("card--hover");
-  console.log("object");
   $(this).find(".card-body").toggleClass("card-body--show");
   $(this)
     .find("tr")
@@ -31,5 +30,3 @@ $(".card").on("mouseleave", function (e) {
       gsap.fromTo(e, { x: 0 }, { x: -100, duration: 0.2 });
     });
 });
-
-console.log("object");

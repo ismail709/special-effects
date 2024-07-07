@@ -29,12 +29,9 @@
 }
 
 .card-body--show {
-    /* max-height: 500px !important; */
     display: block !important;
 }
 .card-body {
-    /* max-height: 0px; */
-    /* overflow: hidden; */
     display: none;
     color: white;
     transition: all .5s ease-in-out;
